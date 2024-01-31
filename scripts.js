@@ -16,12 +16,12 @@ function selectLanguage() {
   var languageSelect = document.getElementById('languageSelect');
   var selectedLanguage = languageSelect.value;
   fetch(`${selectedLanguage}.html`)
-        .then(response => response.text())
-        .then(htmlContent => {
-            // 将加载的 HTML 内容替换到页面中
-            document.getElementById('container').innerHTML = htmlContent;
-        })
-        .catch(error => console.error('Error loading language file:', error));
+    .then(response => response.text())
+    .then(htmlContent => {
+      // 将加载的 HTML 内容替换到页面中
+      document.getElementById('container').innerHTML = htmlContent;
+    })
+    .catch(error => console.error('Error loading language file:', error));
 
 }
 
@@ -39,8 +39,8 @@ function updateProgressBar() {
   document.getElementById('effortNum').innerText = effort;
   document.getElementById('carbonNum').innerText = carbon.toFixed(1);
 
-  document.getElementById('effortFiller').style.width = effort + '%' ;
-  document.getElementById('carbonFiller').style.width = carbon/34.2 * 100 + '%' ;
+  document.getElementById('effortFiller').style.width = effort + '%';
+  document.getElementById('carbonFiller').style.width = carbon / 34.2 * 100 + '%';
 }
 
 function checkStatus() {
@@ -53,7 +53,7 @@ function checkStatus() {
     document.getElementById('carbonFiller').style.backgroundColor = 'rgb(253, 235, 83)';
     document.getElementById('darkCloud2').style.display = 'none';
     document.getElementById('whiteCloud2').style.display = 'block';
-  }  
+  }
   if (carbon <= 8.1 && carbon > 0) {
     document.getElementById('carbonFiller').style.backgroundColor = 'rgb(162, 201, 74)';
     document.getElementById('darkCloud1').style.display = 'none';
@@ -97,7 +97,7 @@ function saveInteraction() {
 
   if (carbon <= 0) {
     document.getElementById('win').style.display = 'none';
-  } else if (num>= 12) {
+  } else if (num >= 12) {
     document.getElementById('end').style.display = 'none';
   } else {
     document.getElementById('lose').style.display = 'none';
@@ -172,8 +172,8 @@ function checkCoalAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="coalAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
-  } 
+    alert('Please select an answer before submitting.');
+  }
 }
 
 function clickCar() {
@@ -188,8 +188,6 @@ function checkCarAnswer() {
 
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
-
-    // 根据用户答案更新分数
     if (userAnswer === 'carA') {
       if (effort >= 5) {
         effort -= 5;
@@ -199,7 +197,7 @@ function checkCarAnswer() {
         document.getElementById('carA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'carB') {
       if (effort >= 10) {
@@ -244,7 +242,7 @@ function clickBuild() {
   startTime = new Date();
   document.getElementById('buildQuiz').style.display = 'block';
 }
- 
+
 function checkBuildAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="buildAnswer"]:checked');
@@ -252,7 +250,6 @@ function checkBuildAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'buildA') {
       if (effort >= 3) {
         effort -= 3;
@@ -261,6 +258,8 @@ function checkBuildAnswer() {
         document.getElementById('build').style.display = 'none';
         document.getElementById('buildA').style.display = 'block';
         flag = true;
+      } else {
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'buildB') {
       if (effort >= 5) {
@@ -271,6 +270,9 @@ function checkBuildAnswer() {
         document.getElementById('buildB').style.display = 'block';
         flag = true;
       }
+      else {
+        alert('You don’t have enough effort points for this option. Please choose another answer.');
+      }
     } else if (userAnswer === 'buildC') {
       if (effort >= 8) {
         effort -= 8;
@@ -279,6 +281,9 @@ function checkBuildAnswer() {
         document.getElementById('build').style.display = 'none';
         document.getElementById('buildC').style.display = 'block';
         flag = true;
+      }
+      else {
+        alert('You don’t have enough effort points for this option. Please choose another answer.');
       }
     }
 
@@ -291,7 +296,7 @@ function checkBuildAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="buildAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -301,7 +306,7 @@ function clickRecy() {
   startTime = new Date();
   document.getElementById('recyQuiz').style.display = 'block';
 }
- 
+
 function checkRecyAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="recyAnswer"]:checked');
@@ -309,40 +314,39 @@ function checkRecyAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'recyA') {
-    if (effort >= 1) {
-      effort -= 1;
-      carbon -= 0;
-      document.getElementById('recyQuiz').style.display = 'none';
-      document.getElementById('recy').style.display = 'none';
-      document.getElementById('recyA').style.display = 'block';
-      flag = true;
-    } else {
-      alert('You don’t have enough effort points for this option. Please choose another answer.');
-    }
+      if (effort >= 1) {
+        effort -= 1;
+        carbon -= 0;
+        document.getElementById('recyQuiz').style.display = 'none';
+        document.getElementById('recy').style.display = 'none';
+        document.getElementById('recyA').style.display = 'block';
+        flag = true;
+      } else {
+        document.getElementById('lose').style.display = 'block';
+      }
     } else if (userAnswer === 'recyB') {
-    if (effort >= 2) {
-      effort -= 2;
-      carbon -= 0.1;
-      document.getElementById('recyQuiz').style.display = 'none';
-      document.getElementById('recy').style.display = 'none';
-      document.getElementById('recyB').style.display = 'block';
-      flag = true;
-    } else {
-      alert('You don’t have enough effort points for this option. Please choose another answer.');
-    }
+      if (effort >= 2) {
+        effort -= 2;
+        carbon -= 0.1;
+        document.getElementById('recyQuiz').style.display = 'none';
+        document.getElementById('recy').style.display = 'none';
+        document.getElementById('recyB').style.display = 'block';
+        flag = true;
+      } else {
+        alert('You don’t have enough effort points for this option. Please choose another answer.');
+      }
     } else if (userAnswer === 'recyC') {
-    if (effort >= 5) {
-      effort -= 5;
-      carbon -= 1.4;
-      document.getElementById('recyQuiz').style.display = 'none';
-      document.getElementById('recy').style.display = 'none';
-      document.getElementById('recyC').style.display = 'block';
-      flag = true;
-    } else {
-      alert('You don’t have enough effort points for this option. Please choose another answer.');
-    }
+      if (effort >= 5) {
+        effort -= 5;
+        carbon -= 1.4;
+        document.getElementById('recyQuiz').style.display = 'none';
+        document.getElementById('recy').style.display = 'none';
+        document.getElementById('recyC').style.display = 'block';
+        flag = true;
+      } else {
+        alert('You don’t have enough effort points for this option. Please choose another answer.');
+      }
     }
 
     if (flag) {
@@ -354,7 +358,7 @@ function checkRecyAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="recyAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -365,7 +369,7 @@ function clickElec() {
   startTime = new Date();
   document.getElementById('elecQuiz').style.display = 'block';
 }
- 
+
 function checkElecAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="elecAnswer"]:checked');
@@ -373,7 +377,6 @@ function checkElecAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'elecA') {
       if (effort >= 5) {
         effort -= 5;
@@ -383,7 +386,7 @@ function checkElecAnswer() {
         document.getElementById('elecA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'elecB') {
       if (effort >= 10) {
@@ -409,7 +412,7 @@ function checkElecAnswer() {
       }
     }
 
-    if(flag) {
+    if (flag) {
       addData(startTime, 'elec', userAnswer);
       updateProgressBar();
       checkStatus();
@@ -418,7 +421,7 @@ function checkElecAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="elecAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -427,7 +430,7 @@ function clickPlane() {
   startTime = new Date();
   document.getElementById('planeQuiz').style.display = 'block';
 }
- 
+
 function checkPlaneAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="planeAnswer"]:checked');
@@ -435,7 +438,6 @@ function checkPlaneAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'planeA') {
       if (effort >= 5) {
         effort -= 5;
@@ -445,7 +447,7 @@ function checkPlaneAnswer() {
         document.getElementById('planeA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'planeB') {
       if (effort >= 7) {
@@ -471,7 +473,7 @@ function checkPlaneAnswer() {
       }
     }
 
-    if(flag) {
+    if (flag) {
       addData(startTime, 'plane', userAnswer);
       updateProgressBar();
       checkStatus();
@@ -480,7 +482,7 @@ function checkPlaneAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="planeAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -489,7 +491,7 @@ function clickOcean() {
   startTime = new Date();
   document.getElementById('oceanQuiz').style.display = 'block';
 }
- 
+
 function checkOceanAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="oceanAnswer"]:checked');
@@ -506,7 +508,7 @@ function checkOceanAnswer() {
         document.getElementById('oceanA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'oceanB') {
       if (effort >= 4) {
@@ -532,7 +534,7 @@ function checkOceanAnswer() {
       }
     }
 
-    if(flag) {
+    if (flag) {
       addData(startTime, 'ocean', userAnswer);
       updateProgressBar();
       checkStatus();
@@ -541,7 +543,7 @@ function checkOceanAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="oceanAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -550,7 +552,7 @@ function clickPpl() {
   startTime = new Date();
   document.getElementById('pplQuiz').style.display = 'block';
 }
- 
+
 function checkPplAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="pplAnswer"]:checked');
@@ -567,7 +569,7 @@ function checkPplAnswer() {
         document.getElementById('pplA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'pplB') {
       if (effort >= 3) {
@@ -601,7 +603,7 @@ function checkPplAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="pplAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -610,7 +612,7 @@ function clickUrban() {
   startTime = new Date();
   document.getElementById('urbanQuiz').style.display = 'block';
 }
- 
+
 function checkUrbanAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="urbanAnswer"]:checked');
@@ -627,7 +629,7 @@ function checkUrbanAnswer() {
         document.getElementById('urbanA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'urbanB') {
       if (effort >= 8) {
@@ -662,7 +664,7 @@ function checkUrbanAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="urbanAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -672,7 +674,7 @@ function clickIndu() {
   startTime = new Date();
   document.getElementById('induQuiz').style.display = 'block';
 }
- 
+
 function checkInduAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="induAnswer"]:checked');
@@ -680,7 +682,6 @@ function checkInduAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'induA') {
       if (effort >= 5) {
         effort -= 5;
@@ -690,7 +691,7 @@ function checkInduAnswer() {
         document.getElementById('induA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'induB') {
       if (effort >= 10) {
@@ -725,7 +726,7 @@ function checkInduAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="induAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -735,7 +736,7 @@ function clickDefo() {
   startTime = new Date();
   document.getElementById('defoQuiz').style.display = 'block';
 }
- 
+
 function checkDefoAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="defoAnswer"]:checked');
@@ -743,7 +744,6 @@ function checkDefoAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'defoA') {
       if (effort >= 5) {
         effort -= 5;
@@ -753,7 +753,7 @@ function checkDefoAnswer() {
         document.getElementById('defoA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'defoB') {
       if (effort >= 8) {
@@ -788,7 +788,7 @@ function checkDefoAnswer() {
     // 重置选项按钮
     document.querySelectorAll('input[name="defoAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
 
@@ -797,7 +797,7 @@ function clickAgri() {
   startTime = new Date();
   document.getElementById('agriQuiz').style.display = 'block';
 }
- 
+
 function checkAgriAnswer() {
   flag = false;
   const selectedAnswer = document.querySelector('input[name="agriAnswer"]:checked');
@@ -805,7 +805,6 @@ function checkAgriAnswer() {
   if (selectedAnswer) {
     const userAnswer = selectedAnswer.value;
 
-    // 根据用户答案更新分数
     if (userAnswer === 'agriA') {
       if (effort >= 5) {
         effort -= 5;
@@ -815,7 +814,7 @@ function checkAgriAnswer() {
         document.getElementById('agriA').style.display = 'block';
         flag = true;
       } else {
-        alert('You don’t have enough effort points for this option. Please choose another answer.');
+        document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'agriB') {
       if (effort >= 8) {
@@ -841,16 +840,16 @@ function checkAgriAnswer() {
       }
     }
 
-    if  (flag) {
+    if (flag) {
       addData(startTime, 'agri', userAnswer);
       updateProgressBar();
-      checkStatus();      
+      checkStatus();
     }
 
 
     // 重置选项按钮
     document.querySelectorAll('input[name="agriAnswer"]').forEach(option => option.checked = false);
   } else {
-      alert('Please select an answer before submitting.');
+    alert('Please select an answer before submitting.');
   }
 }
