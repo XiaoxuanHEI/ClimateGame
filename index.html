@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container" id="container">
+    <img class="background-image" src="imgs/map.jpeg" alt="Background Image">
+    <div class="overlay" id="overlay" style="display: block;"></div>
+    <div class="modal" id="intro" style="display: block;">
+
+    <label for="languageSelect">Select Language:</label>
+    <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+    </select>
+    <button class="button submit-button" onclick="selectLanguage()">Confirm</button>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>

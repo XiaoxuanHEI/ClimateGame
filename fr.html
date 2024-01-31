@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Interaction Logger</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="container">
+    <img class="background-image" src="imgs/map.jpeg" alt="Background Image">
+
+  <div class="progress-bars">
+  <div class="stat-with-progress">
+    <div class="text">
+      <div class="label">Effort</div>
+      <div class="value">
+        <span style="font-weight: 600;" id="effortNum">100</span>
+      </div>
+    </div>
+    <div class="progress-bar" style="height: 8px;" id="effortBar">
+      <div class="filler" id="effortFiller" style="width: 100%; background-color: black; transition: width 300ms ease-in-out, background-color 300ms; border-top-right-radius: inherit; border-bottom-right-radius: inherit;"></div>
+    </div>
+  </div>
+  <div class="stat-with-progress">
+    <div class="text">
+      <div class="label">CO2</div>
+      <div class="value">
+        <span style="font-weight: 600;" id="carbonNum">34.2</span>
+      </div>
+    </div>
+    <div class="progress-bar" style="height: 8px;" id="carbonBar">
+      <div class="filler" id="carbonFiller" style="width: 100%; background-color: rgb(204, 0, 0); transition: width 300ms ease-in-out, background-color 300ms; border-top-right-radius: inherit; border-bottom-right-radius: inherit;"></div>
+    </div>
+  </div>
+</div>
+
+  <!-- <progress id="effortBar" style="top: 5px; right: 100px;" value="100" max="100"></progress>
+  <div class="progress-name" id="effort" style="top:5px; right:200px">Effort</div>    
+  <div class="progress-num" id="effortNum" style="top:5px; right:40px">100</div>
+
+  <progress id="carbonBar" style="top: 20px; right: 100px;" value="34.2" max="34.2"></progress>
+  <div class="progress-name" id="carbon" style="top:20px; right:200px">CO2</div>    
+  <div class="progress-num" id="carbonNum" style="top:20px; right:40px">34.2</div> -->
+
+  <div class="image-container" style="left: 15%;" id="darkCloud1">
+    <img src="imgs/darkcloud.png">
+  </div>
+
+  <div class="image-container" style="left: 40%;" id="darkCloud2">
+    <img src="imgs/darkcloud.png">
+  </div>
+
+  <div class="image-container" style="left: 65%;" id="darkCloud3">
+    <img src="imgs/darkcloud.png">
+  </div>
+
+  <div class="image-container" style="display: none; top: 1%; left: 68%; animation: zoomAnimation 2s ease-in-out;" id="whiteCloud1">
+    <img src="imgs/whiteCloud1.png">
+  </div>
+
+  <div class="image-container" style="display: none; top: 1%; left: 40%; animation: zoomAnimation 2s ease-in-out;" id="whiteCloud2">
+    <img src="imgs/whiteCloud2.png">
+  </div>
+
+  <div class="image-container" style="display: none; top: 0%; left: 15%; animation: zoomAnimation 2s ease-in-out;" id="sun">
+    <img src="imgs/sun.png">
+  </div>
+
+
+
+  <!-- <div class="modal" id="intro" style="display: block;">
+    <h2>Welcome to Our Game!</h2>
+    <p>Design your dream world from the ground up! Build eco-friendly cities, harness the power of renewable energy, and create a harmonious balance between progress and nature. The choices you make will shape the destiny of your virtual world.</p>
+    <button class="button submit-button" id="nextBtn" onclick="next()">Continue</button>
+  </div>
+
+  <div class="modal" id="goal">
+    <p>You have a budget of 100 effort points to spend on saving the planet. Each answers will cost corresponding amount of effort points. At the same time, the CO2 emission will be reduced. 
+      The goal is to redcuce the CO2 emission as low as possible. Try to choose the best answer. </p>
+    <label for="nameInput">Please enter your name:</label>
+    <input type="text" id="nameInput">
+    <button class="button submit-button" id="startBtn" onclick="start()">Start!</button>
+  </div> -->
+
+  <!-- 欢迎界面，测试阶段先隐藏 -->
+  <!-- <div class="overlay" id="overlay" style="display: block;"></div>
+  <div class="modal" id="intro" style="display: block;">
+    <h2>Welcome to Our Game!</h2>
+    <p id="parag1">As we all know, the environment we live in is deteriorating due to the excessive emission of carbon dioxide. 
+      We must take measures to prevent further degradation. 
+      In this game, you will have 100 effort points to use. 
+      Each choice will cost a certain number of effort points, and, at the same time, the carbon dioxide emissions will be reduced accordingly. 
+      Your goal is to choose the most effective measures to reduce carbon dioxide emissions as close to zero as possible. </p>
+      <label for="nameInput">Please enter your name:</label>
+      <input type="text" id="nameInput">
+      <button class="button submit-button" id="startBtn" onclick="start()">Start!</button>
+  </div> -->
+  
+
+  <div class="button-before" id="coal" style="top: 19%; left: 10%;  width: 150px; height: 150px;" >
+    <img class="button-image-before" src="imgs/coal.png" onclick="clickCoal()" alt="Coal Image">
+  </div>
+
+  <div class="button-after" id="coalA" style="top: 19%; left: 10%;  width: 150px; height: 150px;" >
+    <img class="button-image-after" src="imgs/coal.png" alt="Coal Image">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="coalB" style="top: 19%; left: 10%;  width: 150px; height: 150px;" >
+    <img class="button-image-after" src="imgs/coalB.png" alt="Coal Image">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="car" style="top: 51%; left: 18%; width: 250px; height: 45px;" >
+    <img class="button-image-before"  src="imgs/car.png" onclick="clickCar()" alt="Car Image">
+  </div>
+
+  <div class="button-after" id="carA" style="top: 51%; left: 18%; width: 250px; height: 45px;" >
+    <img class="button-image-after"  src="imgs/carA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="carB" style="top: 46%; left: 18%; width: 130px; height: 107px;" >
+    <img class="button-image-after"  src="imgs/carB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="carC" style="top: 46%; left: 18%; width: 250px; height: 112px;" >
+    <img class="button-image-after"  src="imgs/carC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-before" id="build" style="top: 45%; left: 41%; width: 180px; height: 125px;" >
+    <img class="button-image-before"  src="imgs/build.png" onclick="clickBuild()" alt="Build Image">
+  </div>
+
+  <div class="button-after" id="buildA" style="top: 44%; left: 41%; width: 200px; height: 141px;" >
+    <img class="button-image-after"  src="imgs/buildA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="buildB" style="top: 44%; left: 41%; width: 220px; height: 110px;" >
+    <img class="button-image-after"  src="imgs/buildB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="buildC" style="top: 39.5%; left: 41%; width: 200px; height: 176px;" >
+    <img class="button-image-after"  src="imgs/buildC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="recy" style="top: 19%; left: 32%;  width: 140px; height: 140px;" >
+    <img class="button-image-before" src="imgs/recy.png" onclick="clickRecy()" alt="Industry Image">
+  </div>
+
+  <div class="button-after" id="recyA" style="top: 25%; left: 32%; width: 110px; height: 90px;" >
+    <img class="button-image-after"  src="imgs/recyA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="recyB" style="top: 21%; left: 32%; width: 120px; height: 110px;" >
+    <img class="button-image-after"  src="imgs/recyB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="recyC" style="top: 20%; left: 32%; width: 150px; height: 150px;" >
+    <img class="button-image-after"  src="imgs/recyC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="elec" style="top: 48%; left: 82%;  width: 200px; height: 100px;" >
+    <img class="button-image-before" src="imgs/elec.png" onclick="clickElec()" alt="Electricity Image">
+  </div>
+
+  <div class="button-after" id="elecA" style="top: 42%; left: 82%; width: 165px; height: 135px;" >
+    <img class="button-image-after"  src="imgs/elecA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="elecB" style="top: 44%; left: 82%; width: 220px; height: 104px;" >
+    <img class="button-image-after"  src="imgs/elecB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="elecC" style="top: 44%; left: 82%; width: 220px; height: 110px;" >
+    <img class="button-image-after"  src="imgs/elecC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="plane" style="top: 8%; left: 59%;  width: 180px; height: 65px;" >
+    <img class="button-image-before" src="imgs/plane.png" onclick="clickPlane()" alt="Plane Image">
+  </div>
+
+  <div class="button-after" id="planeA" style="top: 5%; left: 59%; width: 180px; height: 44px;" >
+    <img class="button-image-after"  src="imgs/planeA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="planeB" style="top: 18%; left: 59%; width: 250px; height: 134px;" >
+    <img class="button-image-after"  src="imgs/planeB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="planeC" style="top: 7%; left: 57%; width: 180px; height: 75px;" >
+    <img class="button-image-after"  src="imgs/planeC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+  
+
+  <div class="button-before" id="ocean" style="top: 94%; left: 4%;  width: 200px; height: 160px;" >
+    <img class="button-image-before" src="imgs/ocean.png" onclick="clickOcean()" alt="Ocean Image">
+  </div>
+
+  <div class="button-after" id="oceanA" style="top: 94%; left: 8.3%; width: 200px; height: 100px;" >
+    <img class="button-image-after"  src="imgs/oceanA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="oceanB" style="top: 101.2%; left: 8.3%; width: 200px; height: 139px;" >
+    <img class="button-image-after"  src="imgs/oceanB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="oceanC" style="top: 93.3%; left: 8.3%; width: 200px; height: 90px;" >
+    <img class="button-image-after"  src="imgs/oceanC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="ppl" style="top: 100%; left: 95%;  width: 200px; height: 200px;" >
+    <img class="button-image-before" src="imgs/ppl.png" onclick="clickPpl()" alt="People Image">
+  </div>
+
+  <div class="button-after" id="pplA" style="top: 95%; left: 95%; width: 200px; height: 154px;" >
+    <img class="button-image-after"  src="imgs/pplA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="pplB" style="top: 95%; left: 95%; width: 200px; height: 165px;" >
+    <img class="button-image-after"  src="imgs/pplB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="pplC" style="top: 95%; left: 95%; width: 200px; height: 150px;" >
+    <img class="button-image-after"  src="imgs/pplC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="urban" style="top: 69%; left: 23%;  width: 280px; height: 110px;" >
+    <img class="button-image-before" src="imgs/urban.png" onclick="clickUrban()" alt="Urban Image">
+  </div>
+
+  <div class="button-after" id="urbanA" style="top: 67%; left: 23%; width: 200px; height: 143px;" >
+    <img class="button-image-after"  src="imgs/urbanA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="urbanB" style="top: 68%; left:23%; width: 210px; height: 135px;" >
+    <img class="button-image-after"  src="imgs/urbanB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="urbanC" style="top: 68%; left: 23%; width: 200px; height: 128px;" >
+    <img class="button-image-after"  src="imgs/urbanC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+  <div class="button-before" id="indu" style="top: 42%; left: 61%;  width: 150px; height: 133px;" >
+    <img class="button-image-before" src="imgs/indu.png" onclick="clickIndu()" alt="Industry Image">
+  </div>
+
+  <div class="button-after" id="induA" style="top: 45.5%; left: 61%; width: 180px; height: 152px;" >
+    <img class="button-image-after"  src="imgs/induA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="induB" style="top: 42.5%; left:61%; width: 160px; height: 130px;" >
+    <img class="button-image-after"  src="imgs/induB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="induC" style="top: 42.5%; left: 61%; width: 200px; height: 132px;" >
+    <img class="button-image-after"  src="imgs/induC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-before" id="defo" style="top: 68.5%; left: 56%;  width: 180px; height: 120px;" >
+    <img class="button-image-before" src="imgs/defo.png" onclick="clickDefo()" alt="Deforestation Image">
+  </div>
+
+  <div class="button-after" id="defoA" style="top: 68%; left: 56%; width: 150px; height: 150px;" >
+    <img class="button-image-after"  src="imgs/defoA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="defoB" style="top: 70%; left:56%; width: 150px; height: 100px;" >
+    <img class="button-image-after"  src="imgs/defoB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="defoC" style="top: 70%; left: 56%; width: 300px; height: 100px;" >
+    <img class="button-image-after"  src="imgs/defoC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-before" id="agri" style="top: 71%; left: 92%;  width: 130px; height: 119px;" >
+    <img class="button-image-before" src="imgs/agri.png" onclick="clickAgri()" alt="Agriculture Image">
+  </div>
+
+  <div class="button-after" id="agriA" style="top: 69%; left: 91%; width: 200px; height: 117px;" >
+    <img class="button-image-after"  src="imgs/agriA.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="agriB" style="top: 67%; left:92%; width: 130px; height: 141px;" >
+    <img class="button-image-after"  src="imgs/agriB.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+  <div class="button-after" id="agriC" style="top: 68%; left: 92%; width: 100px; height: 140px;" >
+    <img class="button-image-after"  src="imgs/agriC.png">
+    <div class="tooltip">Completed!</div>
+  </div>
+
+
+
+
+
+  <!-- Quiz Coal -->
+  <div class="quiz-popup" id="coalQuiz">
+    <p>Coal makes up three-quarters of the CO2 produced by electricity. Will you:</p>
+    <label class="option"><input type="radio" name="coalAnswer" value="coalA"> Let the market take its course and coal demand will fall. (Effort 0 points)</label>
+    <label class="option"><input type="radio" name="coalAnswer" value="coalB"> Phase out coal plants in wealthy countries over 10 to 20 years. (Effort 5 points) </label>
+    <label class="option"><input type="radio" name="coalAnswer" value="coalC"> Stop all new coal plants globally and close those in wealthy countries. (Effort 8 points) </label>
+    <button class="button submit-button" onclick="checkCoalAnswer()">Submit</button>
+  </div>
+
+
+   <!-- Quiz Car -->
+   <div class="quiz-popup" id="carQuiz">
+    <p>Population and economic growth mean that road transport is on the rise. How will you deal with it?    </p>
+    <label class="option"><input type="radio" name="carAnswer" value="carA"> Push for electric vehicles to make up almost half of cars on the road. (Effort 5 points)</label>
+    <label class="option"><input type="radio" name="carAnswer" value="carB"> Build tunnels under cities for vehicles to reduce traffic jams. (Effort 10 points) </label>
+    <label class="option"><input type="radio" name="carAnswer" value="carC"> Electrify all new buses, vans and lorries and push for almost all vehicles on the road to be electric. (Effort 10 points) </label>
+    <button class="button submit-button" onclick="checkCarAnswer()">Submit</button>
+  </div>
+
+    <!-- Quiz Recycle -->
+    <div class="quiz-popup" id="recyQuiz">
+      <p>Whether cement, steel or glass, manufacturing causes lots of pollution. Industry alone makes up about a quarter of energy-related CO2 emissions. What do you want to do first?</p>
+      <label class="option"><input type="radio" name="recyAnswer" value="recyA"> Ban all disposable coffee cups and start a campaign to recycle old bicycles. (Effort 1 points)</label>
+      <label class="option"><input type="radio" name="recyAnswer" value="recyB"> Give financial breaks to people who recycle their small electronics. (Effort 2 points) </label>
+      <label class="option"><input type="radio" name="recyAnswer" value="recyC"> Demand that 40% of steel and 15% of plastic come from recycled materials by 2030. (Effort 5 points) </label>
+      <button class="button submit-button" onclick="checkRecyAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Building -->
+    <div class="quiz-popup" id="buildQuiz">
+      <p> Buildings and construction make up almost one-third of energy use. Cities are growing fast in developing countries. What will you do? </p>
+      <label class="option"><input type="radio" name="buildAnswer" value="buildA"> Deal with both old and new buildings: retrofit 20% of the old ones, and declare all new buildings must be zero carbon. (Effort 3 points)</label>
+      <label class="option"><input type="radio" name="buildAnswer" value="buildB"> Mandate the cities must knock down all poorly insulated homes and replace them with highly efficient equivalents. (Effort 5 points) </label>
+      <label class="option"><input type="radio" name="buildAnswer" value="buildC"> Fully retrofit 85% of existing buildings and encourage cold washers for clothes and line drying. (Effort 8 points) </label>
+      <button class="button submit-button" onclick="checkBuildAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Electricity -->
+    <div class="quiz-popup" id="elecQuiz">
+      <p>You’ve decided how you want to deal with coal. What will you do next about electricity?</p>
+      <label class="option"><input type="radio" name="elecAnswer" value="elecA"> Gradually expand renewable electricity and invest in energy storage. (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="elecAnswer" value="elecB"> Invest 1% of global GDP a year in renewable electricity. (Effort 10 points) </label>
+      <label class="option"><input type="radio" name="elecAnswer" value="elecC"> Pump up 2% of global GDP a year into all clean energy sources. (Effort 15 points) </label>
+      <button class="button submit-button" onclick="checkElecAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Plane -->
+    <div class="quiz-popup" id="planeQuiz">
+      <p> Planes emit more CO2 per kilometer flown than many other modes of transport — what will you do to address emissions from planes? </p>
+      <label class="option"><input type="radio" name="planeAnswer" value="planeA"> Gradually introduce low-carbon fuel for aviation. (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="planeAnswer" value="planeB"> Mandate 20% low-carbon fuel for aviation. Cap the number of long-haul flights. Introduce a frequent flyer tax. (Effort 7 points) </label>
+      <label class="option"><input type="radio" name="planeAnswer" value="planeC"> Develop a fuel-powered hypersonic plane that can travel from London to Sydney in four hours to cut commercial flight times. (Effort 10 points) </label>
+      <button class="button submit-button" onclick="checkPlaneAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Ocean -->
+    <div class="quiz-popup" id="oceanQuiz">
+      <p> Oceans absorb just as much CO2 as forests, but they are now more acidic. What will you do? </p>
+      <label class="option"><input type="radio" name="oceanAnswer" value="oceanA"> Increase research into ocean acidification and invest in ways to restore coral reefs. (Effort 2 points)</label>
+      <label class="option"><input type="radio" name="oceanAnswer" value="oceanB"> Restrict deep sea fishing to protect marine ecosystems. (Effort 4 points) </label>
+      <label class="option"><input type="radio" name="oceanAnswer" value="oceanC"> Ban global commercial fishing for five years to allow fish populations to recover. (Effort 10 points) </label>
+      <button class="button submit-button" onclick="checkOceanAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz People -->
+    <div class="quiz-popup" id="pplQuiz">
+      <p> How do you plan to encourage people to reduce their energy consumption in their daily lives? </p>
+      <label class="option"><input type="radio" name="pplAnswer" value="pplA"> Educate massively on the benefits of energy conservation. (Effort 2 points)</label>
+      <label class="option"><input type="radio" name="pplAnswer" value="pplB"> Implement financial incentives for households adopting energy-efficient practices. (Effort 3 points) </label>
+      <label class="option"><input type="radio" name="pplAnswer" value="pplC"> Establish strict standards for the energy efficiency of household appliances and vehicles.  (Effort 4 points) </label>
+      <button class="button submit-button" onclick="checkPplAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Urban -->
+    <div class="quiz-popup" id="urbanQuiz">
+      <p> Urban growth can lead to loss of biodiversity. How do you plan to reconcile urban development with the preservation of biodiversity while reducing CO2 emissions? </p>
+      <label class="option"><input type="radio" name="urbanAnswer" value="urbanA"> Promote the creation of urban parks and ecological corridors to promote biodiversity while reducing asphalted urban spaces. (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="urbanAnswer" value="urbanB"> Implement strict policies to protect urban natural spaces and limit urban expansion to preserve biodiversity. (Effort 8 points) </label>
+      <label class="option"><input type="radio" name="urbanAnswer" value="urbanC"> Integrate green roofs and vertical gardens into urban plans to strengthen biodiversity in urban areas.  (Effort 8 points) </label>
+      <button class="button submit-button" onclick="checkUrbanAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Industry -->
+    <div class="quiz-popup" id="induQuiz">
+      <p>Industry emissions are the hardest to get to zero. What will you do to cut them?      </p>
+      <label class="option"><input type="radio" name="induAnswer" value="induA"> Set national goals to gradually increase hydrogen use, and use of carbon capture and storage. (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="induAnswer" value="induB"> Build state-of-the-art steel mills to make steelmaking more efficient. (Effort 10 points) </label>
+      <label class="option"><input type="radio" name="induAnswer" value="induC"> Significantly expand the use of green hydrogen for industrial production and scale up carbon and storage in steel and cement plants. (Effort 10 points) </label>
+      <button class="button submit-button" onclick="checkInduAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Deforestation -->
+    <div class="quiz-popup" id="defoQuiz">
+      <p> Deforestation contributes to CO2 emissions. How do you plan to tackle this problem?      </p>
+      <label class="option"><input type="radio" name="defoAnswer" value="defoA"> Encourage reforestation and implement forest conservation policies.  (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="defoAnswer" value="defoB"> Impose severe restrictions on tree felling and promote the use of sustainable alternatives. (Effort 8 points) </label>
+      <label class="option"><input type="radio" name="defoAnswer" value="defoC"> Develop binding international agreements to stop deforestation and invest massively in forest regeneration programs. (Effort 10 points) </label>
+      <button class="button submit-button" onclick="checkDefoAnswer()">Submit</button>
+    </div>
+
+    <!-- Quiz Agriculture -->
+    <div class="quiz-popup" id="agriQuiz">
+      <p> Emissions linked to agriculture represent a significant part of the CO2 problem. How do you plan to reduce these emissions?  </p>
+      <label class="option"><input type="radio" name="agriAnswer" value="agriA"> Encourage sustainable agricultural practices and the adoption of low-carbon cultivation techniques. (Effort 5 points)</label>
+      <label class="option"><input type="radio" name="agriAnswer" value="agriB"> Implement strict regulations to reduce the use of fertilizers and pesticides. (Effort 8 points) </label>
+      <label class="option"><input type="radio" name="agriAnswer" value="agriC"> Invest heavily in research into low-carbon food alternatives and promote a transition to more sustainable diets. (Effort 10 points) </label>
+      <button class="button submit-button" onclick="checkAgriAnswer()">Submit</button>
+    </div>
+
+
+
+    <!-- End window -->
+    <div class="quiz-popup" id="lose" style="text-align: center;">
+      <h2>Oh no! </h2>
+      <p>You’ve run out of points, and will not be able to reach net zero.</p>
+      <button class="button submit-button" onclick="saveInteraction()">Save game</button>
+    </div>
+
+    <div class="quiz-popup" id="win" style="text-align: center;">
+      <h2>Congratulations! </h2>  
+      <p>You made wise decisions and cut emissions to zero!</p>
+      <button class="button submit-button" onclick="saveInteraction()">Save game</button>
+    </div>
+
+    <div class="quiz-popup" id="end" style="text-align: center;">
+      <h2>Oh no! </h2>  
+      <p>You made all the decisions but you did not cut emissions to zero!</p>
+      <button class="button submit-button" onclick="saveInteraction()">Save game</button>
+    </div>
+
+
+</div>
+
+  
+
+
+  <script src="scripts.js"></script>
+</body>
+</html>
