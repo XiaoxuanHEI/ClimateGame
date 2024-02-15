@@ -152,6 +152,7 @@ function checkCoalAnswer() {
       document.getElementById('coalQuiz').style.display = 'none';
       document.getElementById('coal').style.display = 'none';
       document.getElementById('coalA').style.display = 'block';
+      createMessage('Continue d’explorer des options plus vertes. Il y a du potentiel pour plus.')
       flag = true;
     } else if (userAnswer === 'coalB') {
       if (effort >= 5) {
@@ -160,9 +161,10 @@ function checkCoalAnswer() {
         document.getElementById('coalQuiz').style.display = 'none';
         document.getElementById('coal').style.display = 'none';
         document.getElementById('coalB').style.display = 'block';
+        createMessage('Tu es clairement sur la bonne voie pour réduire les émissions de CO2, continue de renforcer cet engagement.')
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'coalC') {
       if (effort >= 8) {
@@ -170,9 +172,11 @@ function checkCoalAnswer() {
         carbon += 0.1;
         document.getElementById('coalQuiz').style.display = 'none';
         document.getElementById('coal').style.display = 'none';
+        document.getElementById('coalC').style.display = 'block';
+        createMessage('Bravo! Tu prends la bonne décision pour réduire les émissions de CO2.')
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -207,6 +211,7 @@ function checkCarAnswer() {
         document.getElementById('carQuiz').style.display = 'none';
         document.getElementById('car').style.display = 'none';
         document.getElementById('carA').style.display = 'block';
+        createMessage('Belle décision! Avec un peu plus d’effort, tu réduiras encore plus la consommation de Co2.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -218,9 +223,10 @@ function checkCarAnswer() {
         document.getElementById('carQuiz').style.display = 'none';
         document.getElementById('car').style.display = 'none';
         document.getElementById('carB').style.display = 'block';
+        createMessage('Les actions comptent, mais visons des stratégies plus ambitieuses pour le climat.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'carC') {
       if (effort >= 10) {
@@ -229,9 +235,10 @@ function checkCarAnswer() {
         document.getElementById('carQuiz').style.display = 'none';
         document.getElementById('car').style.display = 'none';
         document.getElementById('carC').style.display = 'block';
+        createMessage('Félicitations tu fais le bon choix pour un avenir plus vert!');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -268,6 +275,7 @@ function checkBuildAnswer() {
         document.getElementById('buildQuiz').style.display = 'none';
         document.getElementById('build').style.display = 'none';
         document.getElementById('buildA').style.display = 'block';
+        createMessage('Excellente initiative vers la réduction des émissions! Avec encore plus d’efforts, l’impact sera considérable.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -279,10 +287,11 @@ function checkBuildAnswer() {
         document.getElementById('buildQuiz').style.display = 'none';
         document.getElementById('build').style.display = 'none';
         document.getElementById('buildB').style.display = 'block';
+        createMessage('Bien, mais nous pouvons faire plus pour notre Terre. Continuons de progresser.');
         flag = true;
       }
       else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'buildC') {
       if (effort >= 8) {
@@ -291,10 +300,11 @@ function checkBuildAnswer() {
         document.getElementById('buildQuiz').style.display = 'none';
         document.getElementById('build').style.display = 'none';
         document.getElementById('buildC').style.display = 'block';
+        createMessage('Continue comme ça, tes choix pour diminuer les émissions sont exceptionnels!');
         flag = true;
       }
       else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -331,6 +341,7 @@ function checkRecyAnswer() {
         document.getElementById('recyQuiz').style.display = 'none';
         document.getElementById('recy').style.display = 'none';
         document.getElementById('recyA').style.display = 'block';
+        createMessage('Chaque petit pas compte, mais soyons plus audacieux dans nos choix écologiques.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -342,9 +353,10 @@ function checkRecyAnswer() {
         document.getElementById('recyQuiz').style.display = 'none';
         document.getElementById('recy').style.display = 'none';
         document.getElementById('recyB').style.display = 'block';
+        createMessage('Ta décision contribue déjà à un avenir plus vert. Poursuis tes efforts pour maximiser cette contribution.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'recyC') {
       if (effort >= 5) {
@@ -353,9 +365,10 @@ function checkRecyAnswer() {
         document.getElementById('recyQuiz').style.display = 'none';
         document.getElementById('recy').style.display = 'none';
         document.getElementById('recyC').style.display = 'block';
+        createMessage('Impressionnant ! Tes décisions en faveur de l’environnement vont porter leurs fruits!');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -393,6 +406,7 @@ function checkElecAnswer() {
         document.getElementById('elecQuiz').style.display = 'none';
         document.getElementById('elec').style.display = 'none';
         document.getElementById('elecA').style.display = 'block';
+        createMessage('C’est un début, mais adoptons des mesures plus fortes!');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -404,9 +418,10 @@ function checkElecAnswer() {
         document.getElementById('elecQuiz').style.display = 'none';
         document.getElementById('elec').style.display = 'none';
         document.getElementById('elecB').style.display = 'block';
+        createMessage('C’est un grand pas pour la réduction des émissions de CO2! Maintiens ce cap et cherche à optimiser davantage tes actions.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'elecC') {
       if (effort >= 15) {
@@ -415,9 +430,10 @@ function checkElecAnswer() {
         document.getElementById('elecQuiz').style.display = 'none';
         document.getElementById('elec').style.display = 'none';
         document.getElementById('elecC').style.display = 'block';
+        createMessage('Un grand bravo pour cette belle décision envers la réduction des émissions!');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -453,6 +469,7 @@ function checkPlaneAnswer() {
         document.getElementById('planeQuiz').style.display = 'none';
         document.getElementById('plane').style.display = 'none';
         document.getElementById('planeA').style.display = 'block';
+        createMessage('Ta décision montre ton engagement envers un environnement plus sain. Continues d’innover pour plus d’efficacité.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -464,9 +481,10 @@ function checkPlaneAnswer() {
         document.getElementById('planeQuiz').style.display = 'none';
         document.getElementById('plane').style.display = 'none';
         document.getElementById('planeB').style.display = 'block';
+        createMessage('Félicitations pour avoir fait ce choix essentiel pour l’environnement!');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'planeC') {
       if (effort >= 10) {
@@ -475,9 +493,10 @@ function checkPlaneAnswer() {
         document.getElementById('planeQuiz').style.display = 'none';
         document.getElementById('plane').style.display = 'none';
         document.getElementById('planeC').style.display = 'block';
+        createMessage('Face à l’urgence climatique, il est temps d’intensifier nos actions écologiques');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -513,6 +532,7 @@ function checkOceanAnswer() {
         document.getElementById('oceanQuiz').style.display = 'none';
         document.getElementById('ocean').style.display = 'none';
         document.getElementById('oceanA').style.display = 'block';
+        createMessage('Bons débuts, mais visons une réduction plus significative des émissions de CO2.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -524,9 +544,10 @@ function checkOceanAnswer() {
         document.getElementById('oceanQuiz').style.display = 'none';
         document.getElementById('ocean').style.display = 'none';
         document.getElementById('oceanB').style.display = 'block';
+        createMessage('Tu es sur le bon chemin vers un avenir durable. Continues d’explorer de nouvelles façons de minimiser les émissions.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'oceanC') {
       if (effort >= 5) {
@@ -535,9 +556,10 @@ function checkOceanAnswer() {
         document.getElementById('oceanQuiz').style.display = 'none';
         document.getElementById('ocean').style.display = 'none';
         document.getElementById('oceanC').style.display = 'block';
+        createMessage('Félicitations! Ce n’est que le début d’une série de succès écologiques.')
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -573,6 +595,7 @@ function checkPplAnswer() {
         document.getElementById('pplQuiz').style.display = 'none';
         document.getElementById('ppl').style.display = 'none';
         document.getElementById('pplA').style.display = 'block';
+        createMessage('Tu es sur le chemin, mais il y a encore du travail pour un impact plus vert.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -584,9 +607,10 @@ function checkPplAnswer() {
         document.getElementById('pplQuiz').style.display = 'none';
         document.getElementById('ppl').style.display = 'none';
         document.getElementById('pplB').style.display = 'block';
+        createMessage('Tu as pris un bon départ vers la diminution des émissions de CO2. Affines maintenant tes stratégies pour un impact encore plus grand.')
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'pplC') {
       if (effort >= 4) {
@@ -595,9 +619,10 @@ function checkPplAnswer() {
         document.getElementById('pplQuiz').style.display = 'none';
         document.getElementById('ppl').style.display = 'none';
         document.getElementById('pplC').style.display = 'block';
+        createMessage('Chapeau! Tes décisions pour un avenir durable vont nous mener loin.')
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -633,6 +658,7 @@ function checkUrbanAnswer() {
         document.getElementById('urbanQuiz').style.display = 'none';
         document.getElementById('urban').style.display = 'none';
         document.getElementById('urbanA').style.display = 'block';
+        createMessage('Ton choix a un impact positif sur l‘environnement. Visons maintenant des réductions encore plus ambitieuses.')
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -645,8 +671,9 @@ function checkUrbanAnswer() {
         document.getElementById('urban').style.display = 'none';
         document.getElementById('urbanB').style.display = 'block';
         flag = true;
+        createMessage('Belle décision! Continue de briller dans tes efforts pour un monde plus propre.')
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'urbanC') {
       if (effort >= 8) {
@@ -655,9 +682,10 @@ function checkUrbanAnswer() {
         document.getElementById('urbanQuiz').style.display = 'none';
         document.getElementById('urban').style.display = 'none';
         document.getElementById('urbanC').style.display = 'block';
+        createMessage('Reconnaître l‘importance de réduire les émissions est crucial, mais n’oublie pas, il y a toujours moyen de faire mieux.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -694,6 +722,7 @@ function checkInduAnswer() {
         document.getElementById('induQuiz').style.display = 'none';
         document.getElementById('indu').style.display = 'none';
         document.getElementById('induA').style.display = 'block';
+        createMessage('Tu as pris un virage prometteur pour l‘environnement. Continues de te concentrer sur ces avancées et de les amplifier.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -705,9 +734,10 @@ function checkInduAnswer() {
         document.getElementById('induQuiz').style.display = 'none';
         document.getElementById('indu').style.display = 'none';
         document.getElementById('induB').style.display = 'block';
+        createMessage('Encourageant, mais il est temps d‘intensifier nos actions écologiques.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'induC') {
       if (effort >= 10) {
@@ -716,9 +746,10 @@ function checkInduAnswer() {
         document.getElementById('induQuiz').style.display = 'none';
         document.getElementById('indu').style.display = 'none';
         document.getElementById('induC').style.display = 'block';
+        createMessage('Bravo! Ton engagement envers la réduction des émissions de CO2 est inspirant.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -755,6 +786,7 @@ function checkDefoAnswer() {
         document.getElementById('defoQuiz').style.display = 'none';
         document.getElementById('defo').style.display = 'none';
         document.getElementById('defoA').style.display = 'block';
+        createMessage('Des choix intéressants, mais poussons plus loin pour le bien de la planète.');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -766,9 +798,10 @@ function checkDefoAnswer() {
         document.getElementById('defoQuiz').style.display = 'none';
         document.getElementById('defo').style.display = 'none';
         document.getElementById('defoB').style.display = 'block';
+        createMessage('Opter pour la réduction des émissions témoigne de ta vision. Poursuis ce chemin et développes tes initiatives écologiques.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'defoC') {
       if (effort >= 10) {
@@ -777,9 +810,10 @@ function checkDefoAnswer() {
         document.getElementById('defoQuiz').style.display = 'none';
         document.getElementById('defo').style.display = 'none';
         document.getElementById('defoC').style.display = 'block';
+        createMessage('Quel triomphe! Félicitations pour cette magnifique décision écologique.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -815,6 +849,7 @@ function checkAgriAnswer() {
         document.getElementById('agriQuiz').style.display = 'none';
         document.getElementById('agri').style.display = 'none';
         document.getElementById('agriA').style.display = 'block';
+        createMessage('Tes efforts sont appréciés, mais amplifions notre impact sur la réduction du CO2');
         flag = true;
       } else {
         document.getElementById('lose').style.display = 'block';
@@ -826,9 +861,10 @@ function checkAgriAnswer() {
         document.getElementById('agriQuiz').style.display = 'none';
         document.getElementById('agri').style.display = 'none';
         document.getElementById('agriB').style.display = 'block';
+        createMessage('C‘est un pas significatif pour la planète. Explores et améliores continuellement tes efforts en ce sens.');
         flag = true;
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     } else if (userAnswer === 'agriC') {
       if (effort >= 10) {
@@ -838,8 +874,9 @@ function checkAgriAnswer() {
         document.getElementById('agri').style.display = 'none';
         document.getElementById('agriC').style.display = 'block';
         flag = true;
+        createMessage('Félicitations! Ton choix est un vrai modèle à suivre.')
       } else {
-        alert('Vous n\'avez pas assez de points d\'effort pour cette option. Veuillez choisir une autre réponse.');
+        alert('Vous n’avez pas assez de points d’effort pour cette option. Veuillez choisir une autre réponse.');
       }
     }
 
@@ -853,4 +890,27 @@ function checkAgriAnswer() {
   } else {
     alert('Veuillez sélectionner une réponse avant de la soumettre.');
   }
+}
+
+
+function createMessage(message) {
+  var modal = document.createElement('div');
+  modal.classList.add('quiz-popup');
+  modal.style.display = 'block';
+
+  var messageParagraph = document.createElement('p');
+  messageParagraph.textContent = message;
+
+  var closeButton = document.createElement('button');
+  closeButton.classList.add('submit-button');
+  closeButton.innerHTML = 'Continue';
+  closeButton.addEventListener('click', function () {
+    document.body.removeChild(modal); 
+  });
+
+
+  modal.appendChild(messageParagraph);
+  modal.appendChild(closeButton);
+
+  document.body.appendChild(modal);
 }

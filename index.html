@@ -71,15 +71,13 @@
 
     <div class="overlay" id="overlay" style="display: block;"></div>
     <div class="modal" id="intro" style="display: block;">
-      <h2>Bienvenue!</h2>
+      <h2 style="text-align: center;">Bienvenue!</h2>
       <p>Comme nous le savons tous, l’environnement dans lequel nous vivons se détériore en raison des émissions
-        excessives de dioxyde de carbone.
-        Nous devons prendre des mesures pour empêcher une nouvelle dégradation.
-        Dans ce jeu, vous disposerez de 100 points d’effort à utiliser.
-        Chaque option coûte un certain nombre de points d’effort et entraîne une réduction correspondante des émissions
+        excessives de dioxyde de carbone. Nous devons prendre des mesures pour empêcher une nouvelle dégradation.</p>
+        <p>Dans ce jeu, vous disposerez de 100 points d’effort à utiliser. Chaque option coûte un certain nombre de points d’effort et entraîne une réduction correspondante des émissions
         de CO2.
         Votre objectif est de choisir les mesures les plus efficaces pour réduire au maximum les émissions de CO2.</p>
-      <label for="nameInput">S'il vous plaît entrez votre identifiant:</label>
+      <label for="nameInput">S’il vous plaît entrez votre identifiant:</label>
       <input type="text" id="nameInput">
       <button class="button submit-button" id="startBtn" onclick="start()">Aller!</button>
     </div>
@@ -96,6 +94,11 @@
 
     <div class="button-after" id="coalB" style="top: 19%; left: 10%;  width: 150px; height: 150px;">
       <img class="button-image-after" src="imgs/coalB.png" alt="Coal Image">
+      <div class="tooltip">Complété!</div>
+    </div>
+
+    <div class="button-after" id="coalC" style="top: 20%; left: 10%;  width: 140px; height: 140px;">
+      <img class="button-image-after" src="imgs/coalC.png" alt="Coal Image">
       <div class="tooltip">Complété!</div>
     </div>
 
@@ -316,18 +319,23 @@
       <div class="tooltip">Complété!</div>
     </div>
 
+    <!-- <div id="character">
+      <img src="imgs/character.png" alt="Character">
+      <div id="speechBubble" style="display:display;"></div>
+    </div> -->
+    
 
 
-
+    <!-- <button class="button submit-button" id="play1" onclick="playAudio1()">播放文件1</button> -->
 
     <!-- Quiz Coal -->
     <div class="quiz-popup" id="coalQuiz">
-      <p>Trois quarts des émissions de CO2 liées à l'électricité proviennent du charbon. Allez-vous?</p>
+      <p>Trois quarts des émissions de CO2 liées à l’électricité proviennent du charbon. Allez-vous?</p>
       <div class="options">
-        <label class="option"><input type="radio" name="coalAnswer" value="coalB"> Éliminer progressivement les
-          centrales à charbon dans les pays riches sur une période de 10 à 20 ans. (Effort 5 points) </label>
         <label class="option"><input type="radio" name="coalAnswer" value="coalA"> Laisser le marché suivre son cours et
           la demande de charbon diminuera. (Effort 0 points)</label>
+        <label class="option"><input type="radio" name="coalAnswer" value="coalB"> Éliminer progressivement les
+          centrales à charbon dans les pays riches sur une période de 10 à 20 ans. (Effort 5 points) </label>
         <label class="option"><input type="radio" name="coalAnswer" value="coalC"> Arrêter toutes les nouvelles
           centrales à charbon dans le monde et fermer celles dans les pays riches. (Effort 8 points) </label>
       </div>
@@ -353,17 +361,17 @@
 
     <!-- Quiz Building -->
     <div class="quiz-popup" id="buildQuiz">
-      <p> Les bâtiments et la construction représentent près d'un tiers de la consommation d'énergie. Les villes se
+      <p> Les bâtiments et la construction représentent près d’un tiers de la consommation d’énergie. Les villes se
         développent rapidement dans les pays en développement. Que ferez-vous? </p>
       <div class="options">
-        <label class="option"><input type="radio" name="buildAnswer" value="buildA"> S'occuper à la fois des anciens et
+        <label class="option"><input type="radio" name="buildAnswer" value="buildA"> S’occuper à la fois des anciens et
           des nouveaux bâtiments : rénover 20 % des anciens et déclarer que tous les nouveaux bâtiments doivent être à
           zéro émission de carbone. (Effort 3 points)</label>
         <label class="option"><input type="radio" name="buildAnswer" value="buildB"> Exiger que les villes réhabilitent
           toutes les maisons mal isolées et les remplacent par des équivalents hautement efficaces. (Effort 5 points)
         </label>
         <label class="option"><input type="radio" name="buildAnswer" value="buildC"> Rénover entièrement 85% des
-          bâtiments existants et encourager les lave-linge à l'eau froide et le séchage en ligne. (Effort 8 points)
+          bâtiments existants et encourager les lave-linge à l’eau froide et le séchage en ligne. (Effort 8 points)
         </label>
       </div>
       <button class="button submit-button" onclick="checkBuildAnswer()">Soumettre</button>
@@ -371,15 +379,15 @@
 
     <!-- Quiz Recycle -->
     <div class="quiz-popup" id="recyQuiz">
-      <p>Travailler dans l'industrie du ciment, de l'acier ou du verre implique une émission importante de pollution.
-        L'industrie seule représente environ un quart des émissions de CO2 liées à l'énergie. Que souhaitez-vous faire
+      <p>Travailler dans l’industrie du ciment, de l’acier ou du verre implique une émission importante de pollution.
+        L’industrie seule représente environ un quart des émissions de CO2 liées à l’énergie. Que souhaitez-vous faire
         en premier?</p>
       <div class="options">
         <label class="option"><input type="radio" name="recyAnswer" value="recyA"> Interdire tous les gobelets de café
           jetables et lancer une campagne pour recycler les vieux vélos. (Effort 1 points)</label>
         <label class="option"><input type="radio" name="recyAnswer" value="recyB"> Accorder des avantages financiers aux
           personnes qui recyclent leurs petits appareils électroniques. (Effort 2 points) </label>
-        <label class="option"><input type="radio" name="recyAnswer" value="recyC"> Exiger que 40 % de l'acier et 15 % du
+        <label class="option"><input type="radio" name="recyAnswer" value="recyC"> Exiger que 40 % de l’acier et 15 % du
           plastique proviennent de matériaux recyclés. (Effort 5 points) </label>
       </div>
       <button class="button submit-button" onclick="checkRecyAnswer()">Soumettre</button>
@@ -388,27 +396,27 @@
 
     <!-- Quiz Electricity -->
     <div class="quiz-popup" id="elecQuiz">
-      <p>Vous avez décidé de la manière dont vous voulez gérer le charbon. Que ferez-vous ensuite pour l'électricité?
+      <p>Vous avez décidé de la manière dont vous voulez gérer le charbon. Que ferez-vous ensuite pour l’électricité?
       </p>
       <div class="options">
-        <label class="option"><input type="radio" name="elecAnswer" value="elecA"> Étendre progressivement l'électricité
-          renouvelable et investir dans le stockage d'énergie. (Effort 5 points)</label>
+        <label class="option"><input type="radio" name="elecAnswer" value="elecA"> Étendre progressivement l’électricité
+          renouvelable et investir dans le stockage d’énergie. (Effort 5 points)</label>
         <label class="option"><input type="radio" name="elecAnswer" value="elecB"> Investir 1 % du PIB mondial par an
-          dans l'électricité renouvelable. (Effort 10 points) </label>
+          dans l’électricité renouvelable. (Effort 10 points) </label>
         <label class="option"><input type="radio" name="elecAnswer" value="elecC"> Injecter 2 % du PIB mondial par an
-          dans toutes les sources d'énergie propre. (Effort 15 points) </label>
+          dans toutes les sources d’énergie propre. (Effort 15 points) </label>
       </div>
       <button class="button submit-button" onclick="checkElecAnswer()">Soumettre</button>
     </div>
 
     <!-- Quiz Plane -->
     <div class="quiz-popup" id="planeQuiz">
-      <p> Le transport ne concerne pas seulement les voitures. Que ferez-vous pour réduire les émissions d' avions? </p>
+      <p> Le transport ne concerne pas seulement les voitures. Que ferez-vous pour réduire les émissions d’ avions? </p>
       <div class="options">
         <label class="option"><input type="radio" name="planeAnswer" value="planeA"> Introduire progressivement du
-          carburant à faible teneur en carbone pour l'aviation. (Effort 5 points)</label>
+          carburant à faible teneur en carbone pour l’aviation. (Effort 5 points)</label>
         <label class="option"><input type="radio" name="planeAnswer" value="planeB"> Exiger 20 % de carburant à faible
-          teneur en carbone pour l'aviation. Plafonner le nombre de vols long-courriers. Instaurer une taxe pour les
+          teneur en carbone pour l’aviation. Plafonner le nombre de vols long-courriers. Instaurer une taxe pour les
           voyageurs fréquents. (Effort 7 points) </label>
         <label class="option"><input type="radio" name="planeAnswer" value="planeC"> Développer un avion hypersonique
           alimenté au carburant capable de voyager de Londres à Sydney en quatre heures pour réduire les temps de vol
@@ -422,7 +430,7 @@
       <p> Les océans absorbent tout autant de CO2 que les forêts, mais ils sont maintenant plus acides. Que ferez-vous?
       </p>
       <label class="option"><input type="radio" name="oceanAnswer" value="oceanA"> Augmenter la recherche sur
-        l'acidification des océans et investir dans des moyens de restauration des récifs coralliens. (Effort 2
+        l’acidification des océans et investir dans des moyens de restauration des récifs coralliens. (Effort 2
         points)</label>
       <label class="option"><input type="radio" name="oceanAnswer" value="oceanB"> Restreindre la pêche en haute mer
         pour protéger les écosystèmes marins. (Effort 4 points) </label>
@@ -434,14 +442,14 @@
 
     <!-- Quiz People -->
     <div class="quiz-popup" id="pplQuiz">
-      <p> Comment comptez-vous encourager les gens à réduire leur consommation d'énergie dans leur vie quotidienne? </p>
+      <p> Comment comptez-vous encourager les gens à réduire leur consommation d’énergie dans leur vie quotidienne? </p>
       <div class="options">
         <label class="option"><input type="radio" name="pplAnswer" value="pplA"> Éduquer massivement sur les avantages
-          de la conservation de l'énergie. (Effort 2 points)</label>
+          de la conservation de l’énergie. (Effort 2 points)</label>
         <label class="option"><input type="radio" name="pplAnswer" value="pplB"> Mettre en œuvre des incitations
           financières pour les foyers adoptant des pratiques écoénergétiques. (Effort 3 points) </label>
         <label class="option"><input type="radio" name="pplAnswer" value="pplC"> Instaurer des normes strictes pour
-          l'efficacité énergétique des appareils électroménagers et des véhicules. (Effort 4 points) </label>
+          l’efficacité énergétique des appareils électroménagers et des véhicules. (Effort 4 points) </label>
       </div>
       <button class="button submit-button" onclick="checkPplAnswer()">Soumettre</button>
     </div>
@@ -455,10 +463,10 @@
           urbains et de couloirs écologiques pour favoriser la biodiversité tout en réduisant les espaces urbains
           asphaltés. (Effort 5 points)</label>
         <label class="option"><input type="radio" name="urbanAnswer" value="urbanB"> Mettre en place des politiques
-          strictes de protection des espaces naturels urbains et de limitation de l'expansion urbaine pour préserver la
+          strictes de protection des espaces naturels urbains et de limitation de l’expansion urbaine pour préserver la
           biodiversité. (Effort 8 points) </label>
         <label class="option"><input type="radio" name="urbanAnswer" value="urbanC"> Intégrer des toits verts et des
-          jardins verticaux dans les plans d'urbanisme pour renforcer la biodiversité en milieu urbain. (Effort 8
+          jardins verticaux dans les plans d’urbanisme pour renforcer la biodiversité en milieu urbain. (Effort 8
           points) </label>
       </div>
       <button class="button submit-button" onclick="checkUrbanAnswer()">Soumettre</button>
@@ -469,13 +477,13 @@
       <p>Les émissions industrielles sont les plus difficiles à réduire à zéro. Que ferez-vous pour les diminuer?</p>
       <div class="options">
         <label class="option"><input type="radio" name="induAnswer" value="induA"> Fixer des objectifs nationaux pour
-          augmenter progressivement l'utilisation de l'hydrogène et le recours au captage et stockage du carbone.
+          augmenter progressivement l’utilisation de l’hydrogène et le recours au captage et stockage du carbone.
           (Effort 5 points)</label>
         <label class="option"><input type="radio" name="induAnswer" value="induB"> Construire des aciéries de pointe
-          pour rendre la production d'acier plus efficace. (Effort 10 points) </label>
+          pour rendre la production d’acier plus efficace. (Effort 10 points) </label>
         <label class="option"><input type="radio" name="induAnswer" value="induC"> Étendre considérablement
-          l'utilisation de l'hydrogène vert pour la production industrielle et intensifier le captage et le stockage du
-          carbone dans les usines d'acier et de ciment. (Effort 10 points) </label>
+          l’utilisation de l’hydrogène vert pour la production industrielle et intensifier le captage et le stockage du
+          carbone dans les usines d’acier et de ciment. (Effort 10 points) </label>
       </div>
       <button class="button submit-button" onclick="checkInduAnswer()">Soumettre</button>
     </div>
@@ -487,7 +495,7 @@
         <label class="option"><input type="radio" name="defoAnswer" value="defoA"> Encourager la reforestation et mettre
           en œuvre des politiques de conservation des forêts. (Effort 5 points)</label>
         <label class="option"><input type="radio" name="defoAnswer" value="defoB"> Imposer des restrictions sévères à
-          l'abattage d'arbres et promouvoir l'utilisation de produits alternatifs durables. (Effort 8 points) </label>
+          l’abattage d’arbres et promouvoir l’utilisation de produits alternatifs durables. (Effort 8 points) </label>
         <label class="option"><input type="radio" name="defoAnswer" value="defoC"> Élaborer des accords internationaux
           contraignants pour stopper la déforestation et investir massivement dans des programmes de régénération des
           forêts. (Effort 10 points) </label>
@@ -497,13 +505,13 @@
 
     <!-- Quiz Agriculture -->
     <div class="quiz-popup" id="agriQuiz">
-      <p> Les émissions liées à l'agriculture représentent une part importante du problème du CO2. Comment
+      <p> Les émissions liées à l’agriculture représentent une part importante du problème du CO2. Comment
         envisagez-vous réduire ces émissions? </p>
       <div class="options">
         <label class="option"><input type="radio" name="agriAnswer" value="agriA"> Encourager les pratiques agricoles
-          durables et l'adoption de techniques de culture à faible émission de carbone. (Effort 5 points)</label>
+          durables et l’adoption de techniques de culture à faible émission de carbone. (Effort 5 points)</label>
         <label class="option"><input type="radio" name="agriAnswer" value="agriB"> Mettre en œuvre des réglementations
-          strictes pour réduire l'utilisation d'engrais et de pesticides. (Effort 8 points) </label>
+          strictes pour réduire l’utilisation d’engrais et de pesticides. (Effort 8 points) </label>
         <label class="option"><input type="radio" name="agriAnswer" value="agriC"> Investir massivement dans la
           recherche sur des alternatives alimentaires à faible émission de carbone et promouvoir une transition vers des
           régimes alimentaires plus durables. (Effort 10 points) </label>
@@ -515,7 +523,7 @@
     <!-- End window -->
     <div class="quiz-popup" id="lose" style="text-align: center;">
       <h2>Oh non!</h2>
-      <p> Vous n’avez plus de points d'effort et vous ne pourrez pas atteindre le zéro net. </p>
+      <p> Vous n’avez plus de points d’effort et vous ne pourrez pas atteindre le zéro net. </p>
       <button class="button submit-button" onclick="saveInteraction()">Sauvegarder</button>
     </div>
 

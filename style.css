@@ -35,13 +35,15 @@ button {
 /* 提交按钮样式 */
 .submit-button {
   display: block;
-  margin: 20px auto; /* 使按钮居中 */
+  margin: 15px auto; /* 使按钮居中 */
+  margin-bottom: 0px;
+  margin-top: 25px;
   padding: 10px 20px;
   background-color: #55A3AA;
   color: #fff;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 
 label {
@@ -71,17 +73,10 @@ label {
   padding: 20px;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
+  /* text-align: center; */
   z-index: 3;
 }
 
-/* 关闭按钮样式 */
-/* .close-btn {
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-} */
 
     /* 弹出窗口样式 */
 .quiz-popup {
@@ -102,33 +97,9 @@ label {
   display: flex;
   align-items: flex-start;
   margin: 10px 0;
+  /* font-size: 18px; */
 }
 
-.progress-name {
-  position: fixed;
-  color: #B22222;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.progress-num {
-  position: fixed;
-  color: #B22222;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-
-/* 进度条样式 */
-progress {
-  position: fixed;
-  /* top: 10px;
-  right: 80px; */
-  width: 100px;
-  height: 20px;
-}
 
 .progress-bars {
   display: flex;
@@ -176,10 +147,6 @@ progress {
   justify-content: space-between;
   margin-bottom:6px
 }
-
-/* .stat-with-progress:first-of-type {
-  margin-bottom:10px
-} */
 
 
 .tooltip {
