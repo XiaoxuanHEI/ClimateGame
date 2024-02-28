@@ -74,7 +74,8 @@
       <h2 style="text-align: center;">Bienvenue!</h2>
       <p>Comme nous le savons tous, l’environnement dans lequel nous vivons se détériore en raison des émissions
         excessives de dioxyde de carbone. Nous devons prendre des mesures pour empêcher une nouvelle dégradation.</p>
-        <p>Dans ce jeu, vous disposerez de 100 points d’effort à utiliser. Chaque option coûte un certain nombre de points d’effort et entraîne une réduction correspondante des émissions
+      <p>Dans ce jeu, vous disposerez de 100 points d’effort à utiliser. Chaque option coûte un certain nombre de points
+        d’effort et entraîne une réduction correspondante des émissions
         de CO2.
         Votre objectif est de choisir les mesures les plus efficaces pour réduire au maximum les émissions de CO2.</p>
       <label for="nameInput">S’il vous plaît entrez votre identifiant:</label>
@@ -323,7 +324,7 @@
       <img src="imgs/character.png" alt="Character">
       <div id="speechBubble" style="display:display;"></div>
     </div> -->
-    
+
 
 
     <!-- <button class="button submit-button" id="play1" onclick="playAudio1()">播放文件1</button> -->
@@ -429,14 +430,16 @@
     <div class="quiz-popup" id="oceanQuiz">
       <p> Les océans absorbent tout autant de CO2 que les forêts, mais ils sont maintenant plus acides. Que ferez-vous?
       </p>
-      <label class="option"><input type="radio" name="oceanAnswer" value="oceanA"> Augmenter la recherche sur
-        l’acidification des océans et investir dans des moyens de restauration des récifs coralliens. (Effort 2
-        points)</label>
-      <label class="option"><input type="radio" name="oceanAnswer" value="oceanB"> Restreindre la pêche en haute mer
-        pour protéger les écosystèmes marins. (Effort 4 points) </label>
-      <label class="option"><input type="radio" name="oceanAnswer" value="oceanC"> Interdire la pêche commerciale
-        mondiale pendant cinq ans pour permettre aux populations de poissons de se reconstituer. (Effort 10 points)
-      </label>
+      <div class="options">
+        <label class="option"><input type="radio" name="oceanAnswer" value="oceanA"> Augmenter la recherche sur
+          l’acidification des océans et investir dans des moyens de restauration des récifs coralliens. (Effort 2
+          points)</label>
+        <label class="option"><input type="radio" name="oceanAnswer" value="oceanB"> Restreindre la pêche en haute mer
+          pour protéger les écosystèmes marins. (Effort 4 points) </label>
+        <label class="option"><input type="radio" name="oceanAnswer" value="oceanC"> Interdire la pêche commerciale
+          mondiale pendant cinq ans pour permettre aux populations de poissons de se reconstituer. (Effort 10 points)
+        </label>
+      </div>
       <button class="button submit-button" onclick="checkOceanAnswer()">Soumettre</button>
     </div>
 

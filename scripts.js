@@ -39,8 +39,8 @@ function updateProgressBar() {
   document.getElementById('effortFiller').style.width = effort + '%';
   document.getElementById('carbonFiller').style.width = carbon / 34.2 * 100 + '%';
 }
-
 function checkStatus() {
+  carbon = parseFloat(carbon.toFixed(1));
   if (carbon <= 24.3 && carbon > 16.2) {
     document.getElementById('carbonFiller').style.backgroundColor = 'rgb(240, 141, 72)';
     document.getElementById('darkCloud3').style.display = 'none';
@@ -83,7 +83,7 @@ function saveInteraction() {
     userId: userId,
     gameData: gameData,
     effort: effort,
-    CO2: parseFloat(carbon.toFixed(1)),
+    CO2: carbon,
     timeAvg: parseFloat((timeSum / num).toFixed(3))
   };
 
@@ -107,20 +107,17 @@ function saveInteraction() {
   // Remove download link
   document.body.removeChild(downloadLink);
 
-  if (carbon <= 0) {
-    document.getElementById('win').style.display = 'none';
-  } else if (num >= 12) {
-    document.getElementById('end').style.display = 'none';
-  } else {
-    document.getElementById('lose').style.display = 'none';
-  }
+  document.getElementById('win').style.display = 'none';
+  document.getElementById('end').style.display = 'none';
+  document.getElementById('lose').style.display = 'none';
 }
 
 
-function addData(startTime, questionId, choice, num) {
+function addData(questionId, choice) {
   endTime = new Date();
   timeSpent = (endTime - startTime) / 1000;
   timeSum = timeSum + timeSpent;
+  num += 1;
   answer = {
     no: num,
     question: questionId,
@@ -134,7 +131,6 @@ function addData(startTime, questionId, choice, num) {
 
 
 function clickCoal() {
-  num += 1;
   startTime = new Date();
   showQuestion('coalQuiz');
 }
@@ -181,7 +177,7 @@ function checkCoalAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'coal', userAnswer);
+      addData('coal', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -193,7 +189,6 @@ function checkCoalAnswer() {
 }
 
 function clickCar() {
-  num += 1;
   startTime = new Date();
   showQuestion('carQuiz');
 }
@@ -211,9 +206,10 @@ function checkCarAnswer() {
         document.getElementById('carQuiz').style.display = 'none';
         document.getElementById('car').style.display = 'none';
         document.getElementById('carA').style.display = 'block';
-        createMessage('Belle décision! Avec un peu plus d’effort, tu réduiras encore plus la consommation de Co2.');
+        createMessage('Belle décision! Avec un peu plus d’effort, tu réduiras encore plus la consommation de CO2.');
         flag = true;
       } else {
+        document.getElementById('carQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'carB') {
@@ -243,7 +239,7 @@ function checkCarAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'car', userAnswer);
+      addData('car', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -256,7 +252,6 @@ function checkCarAnswer() {
 
 
 function clickBuild() {
-  num += 1;
   startTime = new Date();
   showQuestion('buildQuiz');
 }
@@ -278,6 +273,7 @@ function checkBuildAnswer() {
         createMessage('Excellente initiative vers la réduction des émissions! Avec encore plus d’efforts, l’impact sera considérable.');
         flag = true;
       } else {
+        document.getElementById('buildQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'buildB') {
@@ -309,7 +305,7 @@ function checkBuildAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'build', userAnswer);
+      addData('build', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -322,7 +318,6 @@ function checkBuildAnswer() {
 
 
 function clickRecy() {
-  num += 1;
   startTime = new Date();
   showQuestion('recyQuiz');
 }
@@ -344,6 +339,7 @@ function checkRecyAnswer() {
         createMessage('Chaque petit pas compte, mais soyons plus audacieux dans nos choix écologiques.');
         flag = true;
       } else {
+        document.getElementById('recyQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'recyB') {
@@ -373,7 +369,7 @@ function checkRecyAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'recy', userAnswer);
+      addData('recy', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -387,7 +383,6 @@ function checkRecyAnswer() {
 
 
 function clickElec() {
-  num += 1;
   startTime = new Date();
   showQuestion('elecQuiz');
 }
@@ -409,6 +404,7 @@ function checkElecAnswer() {
         createMessage('C’est un début, mais adoptons des mesures plus fortes!');
         flag = true;
       } else {
+        document.getElementById('elecQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'elecB') {
@@ -438,7 +434,7 @@ function checkElecAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'elec', userAnswer);
+      addData('elec', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -450,7 +446,6 @@ function checkElecAnswer() {
 }
 
 function clickPlane() {
-  num += 1;
   startTime = new Date();
   showQuestion('planeQuiz');
 }
@@ -472,6 +467,7 @@ function checkPlaneAnswer() {
         createMessage('Ta décision montre ton engagement envers un environnement plus sain. Continues d’innover pour plus d’efficacité.');
         flag = true;
       } else {
+        document.getElementById('planeQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'planeB') {
@@ -501,7 +497,7 @@ function checkPlaneAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'plane', userAnswer);
+      addData('plane', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -513,7 +509,6 @@ function checkPlaneAnswer() {
 }
 
 function clickOcean() {
-  num += 1;
   startTime = new Date();
   showQuestion('oceanQuiz');
 }
@@ -535,6 +530,7 @@ function checkOceanAnswer() {
         createMessage('Bons débuts, mais visons une réduction plus significative des émissions de CO2.');
         flag = true;
       } else {
+        document.getElementById('oceanQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'oceanB') {
@@ -564,7 +560,7 @@ function checkOceanAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'ocean', userAnswer);
+      addData('ocean', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -576,7 +572,6 @@ function checkOceanAnswer() {
 }
 
 function clickPpl() {
-  num += 1;
   startTime = new Date();
   showQuestion('pplQuiz');
 }
@@ -598,6 +593,7 @@ function checkPplAnswer() {
         createMessage('Tu es sur le chemin, mais il y a encore du travail pour un impact plus vert.');
         flag = true;
       } else {
+        document.getElementById('pplQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'pplB') {
@@ -627,7 +623,7 @@ function checkPplAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'ppl', userAnswer);
+      addData('ppl', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -639,7 +635,6 @@ function checkPplAnswer() {
 }
 
 function clickUrban() {
-  num += 1;
   startTime = new Date();
   showQuestion('urbanQuiz');
 }
@@ -661,6 +656,7 @@ function checkUrbanAnswer() {
         createMessage('Ton choix a un impact positif sur l‘environnement. Visons maintenant des réductions encore plus ambitieuses.')
         flag = true;
       } else {
+        document.getElementById('urbanQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'urbanB') {
@@ -690,7 +686,7 @@ function checkUrbanAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'urban', userAnswer);
+      addData('urban', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -703,7 +699,6 @@ function checkUrbanAnswer() {
 
 
 function clickIndu() {
-  num += 1;
   startTime = new Date();
   showQuestion('induQuiz');
 }
@@ -725,6 +720,7 @@ function checkInduAnswer() {
         createMessage('Tu as pris un virage prometteur pour l‘environnement. Continues de te concentrer sur ces avancées et de les amplifier.');
         flag = true;
       } else {
+        document.getElementById('induQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'induB') {
@@ -754,7 +750,7 @@ function checkInduAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'indu', userAnswer);
+      addData('indu', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -767,7 +763,6 @@ function checkInduAnswer() {
 
 
 function clickDefo() {
-  num += 1;
   startTime = new Date();
   showQuestion('defoQuiz');
 }
@@ -789,6 +784,7 @@ function checkDefoAnswer() {
         createMessage('Des choix intéressants, mais poussons plus loin pour le bien de la planète.');
         flag = true;
       } else {
+        document.getElementById('defoQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'defoB') {
@@ -818,7 +814,7 @@ function checkDefoAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'defo', userAnswer);
+      addData('defo', userAnswer);
       updateProgressBar();
       checkStatus();
     }
@@ -830,7 +826,6 @@ function checkDefoAnswer() {
 }
 
 function clickAgri() {
-  num += 1;
   startTime = new Date();
   showQuestion('agriQuiz');
 }
@@ -852,6 +847,7 @@ function checkAgriAnswer() {
         createMessage('Tes efforts sont appréciés, mais amplifions notre impact sur la réduction du CO2');
         flag = true;
       } else {
+        document.getElementById('agriQuiz').style.display = 'none';
         document.getElementById('lose').style.display = 'block';
       }
     } else if (userAnswer === 'agriB') {
@@ -881,7 +877,7 @@ function checkAgriAnswer() {
     }
 
     if (flag) {
-      addData(startTime, 'agri', userAnswer);
+      addData('agri', userAnswer);
       updateProgressBar();
       checkStatus();
     }
